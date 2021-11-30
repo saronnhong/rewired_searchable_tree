@@ -20,7 +20,9 @@ so you'll need to set up a lot more.
 
 To submit, clone this repo, create a branch called `<your-first-name>-<your-last-name>` and commit your changes there. Next, push your branch to a repo 
 on your personal Github Account, and share it with `ben-pr-p`. Send an email to hiring@politicsrewired.com
-(replying in your thread is great) letting us know you've finished, and include any additional thoughts you have on your solution.
+(replying in your thread is great) letting us know you've finished, and include any additional thoughts you have on your solution,
+such as why you did what you did, other things you considered, and maybe how it could be refactoring depending on how the uses of the 
+component evolved over time.
 
 We're not 100% sure how long this will take, but please don't spend more than 3 hours on it. If you're about to run out of time, just submit what
 you have, describe what you would have done if you had more time, and take a stab at answering the questions.
