@@ -36,7 +36,9 @@ function App() {
 
   return (
     <Layout>
-      <Header title="Searchable Tree" />
+      <Header>
+        <h1 style={{ color: "white" }}>Searchable Tree Take Home </h1>
+      </Header>
       <Content>
         <Card>
           <Collapse>

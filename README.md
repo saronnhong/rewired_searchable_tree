@@ -46,21 +46,29 @@ to run the tests.
 
 If you run into any issues getting up and running, just email us!
 
-## What To Do!
+## What To Do
 
 Inside of App.tsx and after running `yarn start`, you'll see a basic page that has four collapseable
 panels, each of which renders the `MyTree` component and some other controls. In a real application,
 these would likely be on four separate screens, but we've put them all on one to keep things simple.
 
 For this take home, you should only need to edit the contents of `src/MyTree.tsx` and additionally change 
-what props get passed to the component. 
+what props get passed to the component in `src/App.tsx`. 
+
+### Replacing Sample Data with Test Data
 
 First, we want it to make so `MyTree` displays the data in `./src/data.ts` passed through as a prop, not
 the sample data hardcoded inline. The structures here are a bit different, so they'll need to be converted.
 Each schema should be a node, and each table a child of it. Each table should have 3 children: forms, views,
 and columns, which each have the forms, views, and columns as children for that table node.
 
-Second, we'll need to make each of these four panels work as desired.
+### Making Your Component Re-Usable
+
+Second, we'll need to make each of these four panels work as desired. In each stage, we add another piece of required
+functionality to the `MyTree` component. We recommend reading through and understanding the 4 additions you'll need to make ahead of time
+before starting on the first.
+
+#### Basic
 
 For the first ("Basic"), we just want search to work. By "work", we mean that you can only see
 objects (columns, forms, views, tables, etc.) whose display name or system name matches the user provided text.
@@ -68,10 +76,14 @@ objects (columns, forms, views, tables, etc.) whose display name or system name 
 We want to preserve full paths to leaf nodes though, so if the user types in some text that matches a column,
 we'll want the schema and table for that column to be present.
 
+#### Adding Another Filter Layer
+
 For the second ("With Public Filter"), we're adding a checkbox. If checked, only objects where public is true 
 should be shown. Just like with searching, we everything on the way to a leaf to be shown, so if a schema is not public
 but a table in it is, it should be shown. If public is not checked, all objects should be shown. Columns have no public
 attribute, and so they should be shown regardless of whether public is checked if they match the search.
+
+#### Enhancing the Display with Type Icons
 
 For the third ("With Type Icons"), we're adding custom icons. In the data structure that we pass to the Ant Design
 tree component, we can include an `icon` prop which is a React Component. We've included some suggested icons inside
@@ -79,6 +91,8 @@ the `./src/MyTree.tsx` file, as well as shown with `sampleData` how to pass the 
 random manner. 
 
 For this, we're not adding these icons to all of them - just the third.
+
+#### Enhancing the Display with System Names
 
 For the fourth, we want to add the system name in parenthesis next to the display name, so the sample table Volunteers
 should display as `Volunteers (volunteers)`. Again, this should only be for the fourth panel, not all. 
@@ -117,16 +131,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 

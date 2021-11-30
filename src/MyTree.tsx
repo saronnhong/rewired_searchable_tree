@@ -17,7 +17,7 @@ const TableIcon = TableOutlined;
 const ViewIcon = FilterOutlined;
 const ColumnIcon = NumberOutlined;
 
-// If you don't want to use typescript, use line 10 instead of 11 and comment out the type on line 5
+// If you don't want to use typescript, use line 10 instead of 11 and comment out the type `MyTreeProps` above
 // export const MyTree = (props) => {
 export const MyTree = (props: MyTreeProps) => {
   const sampleData = [
