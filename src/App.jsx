@@ -27,7 +27,7 @@ function App() {
   let searchBasic = (word, panel) => {
     setIsTransformed(true);
     let currPublic = publicResultsOnly;
-    let searchWord = word;
+    let searchWord = word.toLowerCase();
     let dataStorage;
 
     if (data.length === 0 && isTransformed === false) {
