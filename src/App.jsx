@@ -18,14 +18,10 @@ function App() {
   const [isTransformed, setIsTransformed] = useState(false);
 
   let originalData = testData;
-  let originalDataWithDisplayName = testData;
+  let originalDataWithSystemName = testData;
 
-  let dataFormatUpdate = (val) => {
-    originalData = val;
-  }
-
-  let dataFormatUpdateWithDisplayName = (val) => {
-    originalDataWithDisplayName = val;
+  let dataFormatUpdate = (val, displaySystemName) => {
+    displaySystemName ? originalDataWithSystemName = val : originalData = val;
   }
 
   let searchBasic = (word, panel) => {
@@ -36,7 +32,7 @@ function App() {
 
     if (data.length === 0 && isTransformed === false) {
       //using different data for the 4th panel
-      dataStorage = (panel === "fourth") ? originalDataWithDisplayName : originalData;
+      dataStorage = (panel === "fourth") ? originalDataWithSystemName : originalData;
       setData(dataStorage);
     } else {
       dataStorage = data;
@@ -101,14 +97,13 @@ function App() {
     setIsTransformed(false);
     setData([]);
     originalData = testData;
-    originalDataWithDisplayName = testData;
+    originalDataWithSystemName = testData;
   }
 
   const onFirstInputChange = (ev) => {
     setFirstSearch(ev.target.value);
     let arr = searchBasic(ev.target.value, "first")
     setData(arr);
-    console.log("final results: ", arr)
   };
 
   const onSecondInputChange = (ev) => {
@@ -148,7 +143,7 @@ function App() {
               <MyTree
                 data={data.length === 0 && isTransformed === false ? originalData : data}
                 transform={isTransformed}
-                treeUpdate={item => dataFormatUpdate(item)}
+                treeUpdate={item => dataFormatUpdate(item, false)}
                 showIcon={false}
               />
             </Panel>
@@ -164,7 +159,7 @@ function App() {
               <MyTree
                 data={data.length === 0 && isTransformed === false ? originalData : data}
                 transform={isTransformed}
-                treeUpdate={item => dataFormatUpdate(item)}
+                treeUpdate={item => dataFormatUpdate(item, false)}
                 showIcon={false} />
             </Panel>
             <Panel header="3. With Type Icons" key="with-icons-3">
@@ -173,7 +168,7 @@ function App() {
               <MyTree
                 data={data.length === 0 && isTransformed === false ? originalData : data}
                 transform={isTransformed}
-                treeUpdate={item => dataFormatUpdate(item)}
+                treeUpdate={item => dataFormatUpdate(item, false)}
                 showIcon={true} />
             </Panel>
             <Panel header="4. With System Name in Parenthesis" key="with-icons-4">
@@ -182,7 +177,7 @@ function App() {
               <MyTree
                 data={data.length === 0 && isTransformed === false ? originalData : data}
                 transform={isTransformed}
-                treeUpdate={item => dataFormatUpdateWithDisplayName(item)}
+                treeUpdate={item => dataFormatUpdate(item, true)}
                 showIcon={false}
                 displaySystemName={true}
               />
